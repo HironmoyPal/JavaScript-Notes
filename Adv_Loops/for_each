@@ -1,0 +1,218 @@
+# JavaScript Revision Notes
+
+This document explains every block of code you provided — **line by line**, **concept by concept** .
+
+---
+
+# 1. for...in Loop with Objects
+
+```js
+const myObject = {
+    js: 'javascript',
+    cpp: 'C++',
+    rb: "ruby",
+    swift: "swift by apple"
+}
+
+for (const key in myObject) {
+    //console.log(`${key} shortcut is for ${myObject[key]}`);
+}
+```
+
+### ✔ Explanation
+
+* `for...in` is used to loop **keys** of an object.
+* `key` → property name
+* `myObject[key]` → value of the property.
+
+---
+
+# 2. forEach with Arrays
+
+```js
+const coding = ["js", "ruby", "java", "python", "cpp"];
+
+coding.forEach( function (val){ console.log(val); } );
+coding.forEach( (item) => console.log(item) );
+```
+
+### ✔ Explanation
+
+* `forEach()` loops through **array elements only**.
+* It cannot break.
+* It does not return anything.
+
+---
+
+# 3. forEach with Callback Function
+
+```js
+function printMe(item){ console.log(item); }
+coding.forEach(printMe);
+```
+
+### ✔ Explanation
+
+* You can pass a function that runs on each element.
+
+---
+
+# 4. forEach with Objects in Array
+
+```js
+const myCoding = [
+    { languageName: "javascript", languageFileName: "js" },
+    { languageName: "java", languageFileName: "java" },
+    { languageName: "python", languageFileName: "py" },
+];
+
+myCoding.forEach( (item) => console.log(item.languageName) );
+```
+
+### ✔ Explanation
+
+* Access object properties inside `forEach`.
+
+---
+
+# 5. for...in Loop with Arrays
+
+```js
+const programming = ["js", "rb", "py", "java", "cpp"];
+for (const key in programming) {
+    //console.log(programming[key]);
+}
+```
+
+### ✔ Explanation
+
+* `for...in` on arrays gives **index**, not value.
+
+---
+
+# 6. reduce() — Sum of Array
+
+```js
+const myNums = [1, 2, 3];
+const myTotal = myNums.reduce( (acc, curr) => acc + curr, 0 );
+```
+
+### ✔ Explanation
+
+* `acc` = accumulator (running total)
+* `curr` = current element
+
+---
+
+# 7. reduce() in Shopping Cart
+
+```js
+const shoppingCart = [ ... ];
+const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price, 0)
+```
+
+### ✔ Explanation
+
+* Adds up `price` of each item.
+
+---
+
+# 8. Standard for Loop
+
+```js
+for (let i = 0; i <= 10; i++) { ... }
+```
+
+### ✔ Explanation
+
+* Runs 11 times (0 → 10)
+* `break` exits the loop
+* `continue` skips that iteration
+
+---
+
+# 9. Nested Loops (Multiplication Table)
+
+```js
+for (let i = 1; i <= 10; i++) {
+   for (let j = 1; j <= 10; j++) {
+       console.log(i + '*' + j + ' = ' + i*j);
+   }
+}
+```
+
+---
+
+# 10. while Loop
+
+```js
+let arr = 0;
+while (arr < myArray.length) {
+    arr++;
+}
+```
+
+---
+
+# 11. do...while
+
+```js
+do {
+    console.log(`Score is ${score}`);
+    score++;
+} while (score <= 10);
+```
+
+---
+
+# 12. map() + filter() Chaining
+
+```js
+const newNums = myNumers
+                .map(num => num * 10 )
+                .map(num => num + 1)
+                .filter(num => num >= 40);
+```
+
+---
+
+# 13. filter() Example
+
+```js
+let userBooks = books.filter(bk => bk.publish >= 1995 && bk.genre === "History");
+```
+
+---
+
+# 14. for...of Loop
+
+```js
+for (const num of arr) { console.log(num); }
+```
+
+---
+
+# 15. Iterating Maps
+
+```js
+for (const [key, value] of map) { console.log(key, ':-', value); }
+```
+
+---
+
+# 16. while Loop on Arrays
+
+```js
+while (arr < myArray.length) { arr++; }
+```
+
+---
+
+# 17. do...while Example
+
+```js
+let score = 11;
+do { console.log(score); score++; } while(score <= 10);
+```
+
+---
