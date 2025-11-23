@@ -1,0 +1,138 @@
+// JavaScript Functions & This Concept Revision File
+// Author: Hironmoy
+// ---------------------------------------------------------------
+
+
+==============================
+SECTION 1: SIMPLE FUNCTION
+==============================
+
+
+function sayMyName() {
+console.log("H");
+console.log("I");
+console.log("R");
+console.log("O");
+console.log("N");
+console.log("M");
+console.log("O");
+console.log("Y");
+}
+
+
+// sayMyName();
+// OUTPUT:
+// H
+// I
+// R
+// O
+// N
+// M
+// O
+// Y
+
+
+
+
+==============================
+SECTION 2: RETURNING VALUES
+==============================
+
+
+function addTwoNumbers(number1, num) {
+return number1 + num;
+}
+
+
+const result = addTwoNumbers(10, 20);
+// console.log("Result:", result);
+// OUTPUT:
+// Result: 30
+
+
+
+
+==============================
+SECTION 3: DEFAULT PARAMETERS
+==============================
+
+
+function loginUserMessage(username = "hironmoy") {
+if (!username) {
+console.log("Please enter a username");
+return;
+}
+return `${username} just logged in`;
+}
+
+
+// console.log(loginUserMessage("sam"));
+// OUTPUT: sam just logged in
+
+
+// console.log(loginUserMessage());
+// OUTPUT: hironmoy just logged in
+
+
+
+
+==============================
+SECTION 4: REST OPERATOR (...args)
+==============================
+
+
+function calculateCartPrice(item1, item2, ...restItems) {
+return restItems;
+}
+
+
+// console.log(calculateCartPrice(100, 200, 300, 400, 500));
+// OUTPUT: [300, 400, 500]
+
+
+
+
+==============================
+SECTION 5: PASSING OBJECT TO FUNCTION
+==============================
+
+
+const customer = {
+username: "Hironmoy",
+price: 599
+};
+
+
+function handleObject(obj) {
+console.log(`Username is ${obj.username} and price is ${obj.price}`);
+}
+
+
+// handleObject(customer)
+// OUTPUT: Username is Hironmoy and price is 599
+
+
+handleObject({
+username: "Rohit",
+price: 999
+});
+// OUTPUT: Username is Rohit and price is 999
+
+
+
+
+==============================
+SECTION 6: ARRAY HANDLING IN FUNCTION
+==============================
+
+
+const myArray = [10, 20, 30, 40];
+
+
+function returnSecondValue(arr) {
+return arr[1];
+}
+
+
+console.log(returnSecondValue([100, 200, 300, 400]));
+// OUTPUT: 200

@@ -1,0 +1,134 @@
+// JavaScript "this" Behavior Revision File
+// Author: Hironmoy
+// Purpose: Revise for interviews
+// ----------------------------------------------
+
+console.log("===== BROWSER vs NODE: GLOBAL THIS =====");
+
+// 1. GLOBAL SCOPE ----------------------------------------------------
+
+// Browser Output:
+// this === window  -> true
+// globalThis === window -> true
+// Can set: this.hironmoy = "value"
+
+// Node.js Output:
+// this === undefined (ESM) or {} (CommonJS)
+// globalThis === global -> true
+// Cannot set: this.hironmoy (error in ESM), but globalThis.hironmoy works
+
+console.log("In Node.js, top-level this:");
+console.log(this); // Node ESM -> undefined
+
+console.log("In all environments, globalThis:");
+console.log(globalThis); // Always works
+
+
+
+// 2. Setting value using globalThis ----------------------------------
+globalThis.hironmoy = "I am global!";
+console.log("globalThis.hironmoy:", globalThis.hironmoy); // I am global!
+
+
+
+
+
+// 3. ARROW FUNCTION ---------------------------------------------------
+console.log("===== ARROW FUNCTION THIS =====");
+
+const arrowFunc = () => {
+    console.log("Arrow this:", this);
+};
+
+arrowFunc();
+// Browser -> Window {...}
+// Node ESM -> undefined
+
+
+
+
+
+// 4. NORMAL FUNCTION --------------------------------------------------
+console.log("===== NORMAL FUNCTION THIS =====");
+
+const normalFunc = function () {
+    console.log("Normal this:", this);
+};
+
+normalFunc();
+// Browser -> Window {...}
+// Node ESM -> undefined
+
+
+
+
+
+// 5. OBJECT METHOD ----------------------------------------------------
+console.log("===== OBJECT METHOD THIS =====");
+
+const user = {
+    name: "Hironmoy",
+    show: function () {
+        console.log("Object method this.name:", this.name);
+    }
+};
+
+user.show(); // Hironmoy
+
+
+
+
+
+// 6. ARROW FUNCTION INSIDE OBJECT -------------------------------------
+console.log("===== ARROW INSIDE OBJECT =====");
+
+const user2 = {
+    name: "Hironmoy",
+    show: () => {
+        console.log("Arrow method this.name:", this?.name);
+    }
+};
+
+user2.show();
+// Browser -> undefined (this = window, window.name likely empty)
+// Node -> undefined (this = undefined)
+
+
+
+
+
+// 7. CLASS THIS --------------------------------------------------------
+console.log("===== CLASS THIS =====");
+
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    show() {
+        console.log("Class this.name:", this.name);
+    }
+}
+
+const p = new Person("Hironmoy");
+p.show(); // Hironmoy
+
+
+
+
+
+// 8. BIND, CALL, APPLY ------------------------------------------------
+console.log("===== BIND / CALL / APPLY =====");
+
+function greet() {
+    console.log("Hello", this.name);
+}
+
+const obj = { name: "Hironmoy" };
+
+greet.call(obj);  // Hello Hironmoy
+greet.apply(obj); // Hello Hironmoy
+const greetBound = greet.bind(obj);
+greetBound();     // Hello Hironmoy
+
+// END OF REVISION ----------------------------------------------
